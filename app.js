@@ -21,7 +21,7 @@ app.get('/events', function(req, res){
 
 //Get event details route
 app.get('/events/:id', function(req, res){
-  res.send('Event Details route!');
+  res.render('show');
 });
 
 app.listen(3000, function(){
