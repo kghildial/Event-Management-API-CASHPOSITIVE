@@ -125,7 +125,7 @@ app.delete('/events/:id', function(req, res){
 
 
 //Add new comment form
-app.get('/events/:id/comments/new', function(req, res){
+app.get('/events/:id/comments/new', isLoggedIn, function(req, res){
   Event.findById(req.params.id, function(err, event){
     res.render('comments/new', {event: event});
   });
@@ -146,9 +146,6 @@ app.post('/events/:id/comments', function(req, res){
           console.log(err);
         }
         else{
-          comment.author = req.body.author;
-          comment.text = req.body.text;
-          comment.save();
           event.comments.push(comment);
           event.save();
           res.redirect('/events/' + event._id);
