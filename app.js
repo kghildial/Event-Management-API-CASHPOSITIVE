@@ -43,6 +43,11 @@ app.get('/events/:id', function(req, res){
   });
 });
 
+//New event form
+app.get('/events/new', function(req, res){
+  res.render('new');
+});
+
 //Add new comment form
 app.get('/events/:id/comments/new', function(req, res){
   Event.findById(req.params.id, function(err, event){
