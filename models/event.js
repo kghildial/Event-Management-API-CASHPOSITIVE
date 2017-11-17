@@ -7,6 +7,13 @@ var eventSchema = new mongoose.Schema({
   location: String,
   description: String,
   ticket_price: Number,
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+    username: String
+  },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,

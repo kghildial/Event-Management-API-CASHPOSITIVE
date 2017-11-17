@@ -39,13 +39,19 @@ router.post('/events', function(req, res){
   var location = req.body.location;
   var description = req.body.description;
   var ticket_price = req.body.ticket_price;
+  var author = {
+    id: req.user._id,
+    username: req.user.username
+  }
+  // Create event to save in db
   var newEvent = {
     title: title,
     date: date,
     organiser: organiser,
     description: description,
     location: location,
-    ticket_price: ticket_price
+    ticket_price: ticket_price,
+    author: author
   };
   Event.create(newEvent, function(err, newEvent){
     if(err){
