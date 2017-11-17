@@ -1,5 +1,11 @@
 <% include ./partials/header %>
 
-<h1>List of events here!</h1>
+<h2>List of Events</h2>
+<a href="/events/new"><button type="button" name="button">New Event</button></a>
+<ul>
+  <% events.forEach(function(event){ %>
+    <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
+  <% }) %>
+</ul>
 
 <% include ./partials/footer %>

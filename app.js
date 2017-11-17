@@ -3,6 +3,7 @@ var app = express();
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var Event = require('./models/event')
 
 mongoose.connect('mongodb://localhost/eventdb');
 app.set('view engine', 'ejs');
@@ -17,7 +18,14 @@ app.get('/', function(req, res){
 
 //Get all events route
 app.get('/events', function(req, res){
-  res.render('events');
+  Event.find({}, function(err, allEvents){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('events', {events: allEvents});
+    }
+  });
 });
 
 //Get event details route
