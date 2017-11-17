@@ -9,7 +9,7 @@ router.get('/events', function(req, res){
       console.log(err);
     }
     else{
-      res.render('events', {events: allEvents});
+      res.render('events', {events: allEvents, user: req.user});
     }
   });
 });
@@ -64,7 +64,7 @@ router.post('/events', function(req, res){
 });
 
 //Edit event route
-router.get('/events/:id/edit', function(req, res){
+router.get('/events/:id/edit',  checkEventOwnership, function(req, res){
   Event.findById(req.params.id, function(err, event){
     res.render('edit', {event: event});
   });
@@ -83,7 +83,7 @@ router.put('/events/:id', function(req, res){
 });
 
 //Delete event route
-router.delete('/events/:id', function(req, res){
+router.delete('/events/:id',  checkEventOwnership, function(req, res){
   Event.findByIdAndRemove(req.params.id, function(err){
     if(err){
       console.log(err);
@@ -102,6 +102,28 @@ function isLoggedIn(req, res, next){
   }
   else{
     res.redirect("/login");
+  }
+}
+
+
+function checkEventOwnership(req, res, next) {
+  if(req.isAuthenticated()){
+    Event.findById(req.params.id, function(err, foundEvent){
+      if(err){
+        res.redirect('back');
+      }
+      else{
+        if(foundEvent.author.id.equals(req.user._id)){
+          next();
+        }
+        else{
+          res.redirect('back');
+        }
+      }
+    });
+  }
+  else{
+    res.redirect('back');
   }
 }
 
