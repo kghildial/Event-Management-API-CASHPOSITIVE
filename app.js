@@ -6,12 +6,14 @@ var mongoose = require('mongoose');
 var Event = require('./models/event')
 var seedDB = require('./seeds');
 var Comment = require('./models/comment');
+var methodOverride = require('method-override');
 
 seedDB();
 mongoose.connect('mongodb://localhost/eventdb');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 
 //Root route
@@ -78,6 +80,18 @@ app.post('/events', function(req, res){
 app.get('/events/:id/edit', function(req, res){
   Event.findById(req.params.id, function(err, event){
     res.render('edit', {event: event});
+  });
+});
+
+//Update event route
+app.put('/events/:id', function(req, res){
+  Event.findByIdAndUpdate(req.params.id, req.body.event, function(err, updatedEvent){
+    if(err){
+      res.redirect('/events');
+    }
+    else{
+      res.redirect('/events/' + req.params.id);
+    }
   });
 });
 
