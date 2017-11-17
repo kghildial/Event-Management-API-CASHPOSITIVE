@@ -42,6 +42,14 @@ app.get('/events/:id', function(req, res){
   });
 });
 
+
+//Add new comment form
+app.get('/events/:id/comments/new', function(req, res){
+  Event.findById(req.params.id, function(err, event){
+    res.render('comments/new', {event: event});
+  });
+});
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
