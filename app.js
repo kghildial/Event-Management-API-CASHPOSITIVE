@@ -158,6 +158,11 @@ app.post('/events/:id/comments', function(req, res){
   });
 });
 
+//Auth routes
+app.get('/register', function(req, res){
+  res.render('register');
+});
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
