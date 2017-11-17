@@ -198,6 +198,17 @@ app.get('/logout', function(req, res){
   res.redirect('/events');
 });
 
+
+//Middleware
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  else{
+    res.redirect("/login");
+  }
+}
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
