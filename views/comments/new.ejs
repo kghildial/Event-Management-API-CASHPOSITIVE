@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+
+<form class="" action="/events/<%= event._id %>/comments" method="post">
+  <h2>Add Comment to <%= event.title %></h2>
+  <label for="title">Author:</label>
+  <input type="text" name="author" value="">
+  <br>
+  <label for="date">Comment:</label>
+  <input type="text" name="text" value="">
+  <br>
+  <input type="submit" value="submit">
+</form>
+
+<% include ../partials/footer %>
