@@ -18,7 +18,7 @@
 <a href="/events/<%= event._id %>/comments/new"><button type="button" name="button">Add new comment</button> </a>
 <ul>
   <% event.comments.forEach(function(comment){ %>
-    <li><strong><%= comment.author %>: </strong><%= comment.text %></li>
+    <li><strong><%= comment.author.username %>: </strong><%= comment.text %></li>
   <% }) %>
 </ul>
 
