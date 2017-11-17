@@ -184,6 +184,14 @@ app.get('/login', function(req, res){
   res.render('login');
 });
 
+//Handle login logic
+app.post('/login', passport.authenticate('local',
+  {
+    successRedirect: '/events',
+    failureRedirect: '/login'
+  }), function(req, res){
+});
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
