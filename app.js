@@ -31,6 +31,11 @@ app.get('/events', function(req, res){
   });
 });
 
+//New event form
+app.get('/events/new', function(req, res){
+  res.render('new');
+});
+
 //Get event details route
 app.get('/events/:id', function(req, res){
   Event.findById(req.params.id).populate('comments').exec(function(err, event){
@@ -41,11 +46,6 @@ app.get('/events/:id', function(req, res){
       res.render('show', {event: event});
     }
   });
-});
-
-//New event form
-app.get('/events/new', function(req, res){
-  res.render('new');
 });
 
 //Add new comment form
