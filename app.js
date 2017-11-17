@@ -3,10 +3,13 @@ var app = express();
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var Event = require('./models/event')
+var Event = require('./models/event');
 var seedDB = require('./seeds');
 var Comment = require('./models/comment');
 var methodOverride = require('method-override');
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var User = require('./models/user');
 
 seedDB();
 mongoose.connect('mongodb://localhost/eventdb');
