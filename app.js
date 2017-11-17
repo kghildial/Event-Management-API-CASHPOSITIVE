@@ -14,6 +14,11 @@ app.get('/', function(req, res){
   res.send('Root route!');
 });
 
+//Get all events route
+app.get('/events', function(req, res){
+  res.send('Events route!');
+});
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
