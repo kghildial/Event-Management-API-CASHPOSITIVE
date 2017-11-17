@@ -32,7 +32,14 @@ app.get('/events', function(req, res){
 
 //Get event details route
 app.get('/events/:id', function(req, res){
-  res.render('show');
+  Event.findById(req.params.id).populate('comments').exec(function(err, event){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('show', {event: event});
+    }
+  });
 });
 
 app.listen(3000, function(){
