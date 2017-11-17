@@ -16,7 +16,7 @@ app.get('/', function(req, res){
 
 //Get all events route
 app.get('/events', function(req, res){
-  res.send('Events route!');
+  res.render('events');
 });
 
 //Get event details route
