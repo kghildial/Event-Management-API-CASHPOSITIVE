@@ -192,6 +192,12 @@ app.post('/login', passport.authenticate('local',
   }), function(req, res){
 });
 
+//Logout route
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/events');
+});
+
 app.listen(3000, function(){
   console.log('Server started...');
 });
