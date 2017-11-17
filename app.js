@@ -95,6 +95,20 @@ app.put('/events/:id', function(req, res){
   });
 });
 
+//Delete event route
+app.delete('/events/:id', function(req, res){
+  Event.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      console.log(err);
+      res.redirect('/events');
+    }
+    else{
+      res.redirect('/events');
+    }
+  });
+});
+
+
 //Add new comment form
 app.get('/events/:id/comments/new', function(req, res){
   Event.findById(req.params.id, function(err, event){
