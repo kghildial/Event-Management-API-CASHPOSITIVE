@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //Root route
 app.get('/', function(req, res){
-  res.send('Root route!');
+  res.render('index');
 });
 
 //Get all events route
