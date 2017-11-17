@@ -19,6 +19,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 
+//Passport config
+app.use(require('express-session')({
+  secret: 'Passcode!!!',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 //Root route
 app.get('/', function(req, res){
   res.render('index');
