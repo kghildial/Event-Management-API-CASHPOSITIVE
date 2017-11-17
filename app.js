@@ -48,6 +48,32 @@ app.get('/events/:id', function(req, res){
   });
 });
 
+//Create event to db
+app.post('/events', function(req, res){
+  var title = req.body.title;
+  var date = req.body.date;
+  var organiser = req.body.organiser;
+  var location = req.body.location;
+  var description = req.body.description;
+  var ticket_price = req.body.ticket_price;
+  var newEvent = {
+    title: title,
+    date: date,
+    organiser: organiser,
+    description: description,
+    location: location,
+    ticket_price: ticket_price
+  };
+  Event.create(newEvent, function(err, newEvent){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.redirect('/events');
+    }
+  });
+});
+
 //Add new comment form
 app.get('/events/:id/comments/new', function(req, res){
   Event.findById(req.params.id, function(err, event){
