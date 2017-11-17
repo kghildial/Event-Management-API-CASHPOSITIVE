@@ -74,6 +74,13 @@ app.post('/events', function(req, res){
   });
 });
 
+//Edit event route
+app.get('/events/:id/edit', function(req, res){
+  Event.findById(req.params.id, function(err, event){
+    res.render('edit', {event: event});
+  });
+});
+
 //Add new comment form
 app.get('/events/:id/comments/new', function(req, res){
   Event.findById(req.params.id, function(err, event){
