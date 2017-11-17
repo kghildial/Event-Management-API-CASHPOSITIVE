@@ -17,7 +17,8 @@ var eventRoutes = require('./routes/events');
 var indexRoutes = require('./routes/index');
 
 // seedDB(); // Seed the db
-mongoose.connect('mongodb://localhost/eventdb');
+// mongoose.connect('mongodb://localhost/eventdb');
+mongoose.connect('mongodb://Admin:eventDB@ds113046.mlab.com:13046/event_mgmt');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
