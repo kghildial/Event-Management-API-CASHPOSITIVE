@@ -49,7 +49,7 @@ app.get('/events', function(req, res){
 });
 
 //New event form
-app.get('/events/new', function(req, res){
+app.get('/events/new', isLoggedIn, function(req, res){
   res.render('new');
 });
 
