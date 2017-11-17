@@ -4,7 +4,9 @@ var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Event = require('./models/event')
+var seedDB = require('./seeds');
 
+seedDB();
 mongoose.connect('mongodb://localhost/eventdb');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
