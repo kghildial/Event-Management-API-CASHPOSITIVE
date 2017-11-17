@@ -159,8 +159,15 @@ app.post('/events/:id/comments', function(req, res){
 });
 
 //Auth routes
+
+//Get register form
 app.get('/register', function(req, res){
   res.render('register');
+});
+
+//Handle signup logic
+app.post('/register', function(req, res){
+  res.send('Signing you up...');
 });
 
 app.listen(3000, function(){
