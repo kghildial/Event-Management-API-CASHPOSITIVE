@@ -20,32 +20,32 @@ function seedDB(){
       console.log(err);
     }
     console.log('Removed events!!!');
-    //Add events
-    data.forEach(function(seed){
-      Event.create(seed, function(err, event){
-        if(err){
-          console.log(err);
-        }
-        else{
-          console.log('Added an event!');
-        }
-        Comment.create(
-          {
-            text: 'Hi!',
-            author: 'User1'
-          },
-          function(err, comment){
-          if(err){
-            console.log(err);
-          }
-          else{
-            event.comments.push(comment);
-            event.save();
-            console.log('Added comments!');
-          }
-        });
-      });
-    });
+    // //Add events
+    // data.forEach(function(seed){
+    //   Event.create(seed, function(err, event){
+    //     if(err){
+    //       console.log(err);
+    //     }
+    //     else{
+    //       console.log('Added an event!');
+    //     }
+    //     Comment.create(
+    //       {
+    //         text: 'Hi!',
+    //         author: 'User1'
+    //       },
+    //       function(err, comment){
+    //       if(err){
+    //         console.log(err);
+    //       }
+    //       else{
+    //         event.comments.push(comment);
+    //         event.save();
+    //         console.log('Added comments!');
+    //       }
+    //     });
+    //   });
+    // });
   });
 }
 
