@@ -16,7 +16,7 @@ var commentRoutes = require('./routes/comments');
 var eventRoutes = require('./routes/events');
 var indexRoutes = require('./routes/index');
 
-seedDB();
+// seedDB(); // Seed the db
 mongoose.connect('mongodb://localhost/eventdb');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
