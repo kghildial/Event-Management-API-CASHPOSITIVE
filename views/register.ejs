@@ -3,6 +3,12 @@
 <h1>Sign up!</h1>
 
 <form class="" action='/register' method='post'>
+  <label for="type">Type:</label>
+  <select class="" name="type">
+    <option value="Organiser">Organiser</option>
+    <option value="Participant">Participant</option>
+  </select>
+  <br>
   <input type="text" name='username' placeholder='username'>
   <input type="password" name='password' placeholder='password'>
   <input type="submit" name="" value="submit">
